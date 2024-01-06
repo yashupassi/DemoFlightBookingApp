@@ -83,9 +83,8 @@ export const FLIGHT_CLASS_DATA = [
  * Local storage keys
  */
 
-export const FOODZONE_LOGIN_DATA = "foodzone_login_data";
-export const FOODZONE_USER_DATA = "foodzone_user_data"
-export const FOODZONE_CART_DATA = "foodzone_cart_data"
+export const FLIGHTBOOK_LOGIN_DATA = "flightbook_login_data";
+export const FLIGHTBOOK_USER_DATA = "flightbook_user_data"
 
 /** ---------------------------------------------- */
 

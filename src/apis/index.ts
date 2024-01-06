@@ -1,7 +1,7 @@
 import Helper from './Helper'
-import FoodZoneStorage from './FoodZoneStorage'
+import FlightBookingStorage from './FlightBookingStorage'
 
 export {
     Helper,
-    FoodZoneStorage
+    FlightBookingStorage
 }
