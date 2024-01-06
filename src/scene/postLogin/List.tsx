@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useMemo, useState } from 'react'
 import { WRow, WText, WTouchable, WView } from '../../common/ui'
 import Colors from '../../common/styles/Colors'
-import { Header } from '../../common/base_components'
+import { Header, Loader } from '../../common/base_components'
 import { Utils } from '../../common/util'
 import { FlatList } from 'react-native'
 import { FilterModal, FlightListCard, SortModal } from '../../components'
@@ -15,6 +15,7 @@ import { HIGHEST_PRICE, LOWEST_PRICE } from '../../redux/Types'
 
 function List() {
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)
     const [sortType, setSortType] = useState('')
     const [airlines, setAirlines] = useState([])
     const [isSortModalVisible, setIsSortModalVisible] = useState(false)
@@ -29,6 +30,7 @@ function List() {
             setData(flight_data)
             initAirlines()
         }
+        setLoading(false)
     }, [])
 
     const initAirlines = () => {
@@ -171,7 +173,7 @@ function List() {
     return (
         <WView backgroundColor={Colors.white} flex>
             {renderHeader}
-            {renderList}
+            {loading ? <Loader /> : renderList}
             <SortModal
                 onApplySort={handleSort}
                 onCloseModal={toggleSortModal}

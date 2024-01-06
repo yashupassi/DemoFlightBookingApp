@@ -2,6 +2,7 @@ import React, { memo } from 'react';;
 import { WRow, WText, WTouchable, WView } from '../ui';
 import Colors from '../styles/Colors';
 import { Utils } from '../util';
+import { Platform } from 'react-native';
 
 const CustomRadioButton = ({ label, selected, onPress }: any) => {
     const { radioButtonIconContainer, radioButtonIcon } = getStyles()
@@ -20,13 +21,14 @@ const CustomRadioButton = ({ label, selected, onPress }: any) => {
 };
 
 const getStyles = () => {
+    const isAndroid = Platform.OS ==='android'
     return ({
         
         radioButtonIconContainer: {
             width: Utils.scaleSize(20),
             height: Utils.scaleSize(20),
-            borderRadius: Utils.scaleSize(10),
-            borderWidth: Utils.scaleSize(2),
+            borderRadius: Utils.scaleSize(50),
+            borderWidth: Utils.scaleSize(isAndroid ? 4 : 2),
             borderColor: Colors.black,
             justifyContent: 'center',
             alignItems: 'center',

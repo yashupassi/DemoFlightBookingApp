@@ -6,8 +6,10 @@ import { ICON_TYPE_PASSENGER_ADULT, ICON_TYPE_PASSENGER_CHILD, ICON_TYPE_PASSENG
 import AdultIcon from '../../../assets/img/adult.svg'
 import ChildIcon from '../../../assets/img/child.svg'
 import InfantIcon from '../../../assets/img/infant.svg'
+import { Platform } from 'react-native'
 
 function PassengerCounter(props: any) {
+    const isAndroid = Platform.OS ==='android'
     const { icon, passengerType, passengerAgeDescription, onAdd, onSubtract }: any = props
 
     const getIcon = (iconName:string) => {
@@ -58,7 +60,7 @@ function PassengerCounter(props: any) {
                     <WText fontWeight={"600"} fontSize={Utils.scaleSize(15)} color={Colors.dark_gray}>{"-"}</WText>
                 </WTouchable>
 
-                <WView backgroundColor={Colors.light_gray} padding={Utils.scaleSize(0.5)} />
+                <WView backgroundColor={Colors.light_gray} padding={Utils.scaleSize(isAndroid ? 4 : 0.5)} />
 
                 <WTouchable onPress={onAdd} margin={[0, Utils.scaleSize(2)]} padding={[Utils.scaleSize(7), Utils.scaleSize(10)]}>
                     <WText fontWeight={"600"} fontSize={Utils.scaleSize(15)} color={Colors.dark_gray}>{"+"}</WText>

@@ -5,7 +5,7 @@ import Colors from '../styles/Colors';
 function Loader() {
     return (
         <WView dial={5} flex backgroundColor={Colors.white}>
-          <WSpinner size={'large'} color={Colors.black} />
+          <WSpinner size={'large'} color={Colors.theme_color} />
         </WView>
     );
 }
