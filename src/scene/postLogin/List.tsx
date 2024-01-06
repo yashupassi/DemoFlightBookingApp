@@ -54,7 +54,7 @@ function List() {
 
     const onClearFilter = ()=>{
         if(sortType){
-            handleSort(sortType === LOWEST_PRICE, true)
+            handleSort(sortType === LOWEST_PRICE, true, flight_data)
         }
         else{
             setData(flight_data)
@@ -63,23 +63,22 @@ function List() {
     }
 
     const handleFilter = (selecteAirline:any)=>{
-        if(selecteAirline?.length){
-            const flightData = sortType ? data : flight_data
+        const flightData = flight_data
+        if(selecteAirline?.length > 0){
             const filteredFlights = flightData.filter((flight:any) => {
                 const flightAirlines = flight?.displayData?.airlines?.map((airline:any) => airline?.airlineName);
                 return flightAirlines.filter((airline:any) => selecteAirline.includes(airline)).length > 0;
             });
-            setData(filteredFlights)
+            handleSort(sortType === LOWEST_PRICE, true, filteredFlights)
         }
         else{
-            setData([...data])
+            setData(flightData)
         }
         toggleFilterModal()
     }
 
-    const handleSort = (isLowPriceSort: boolean,  isFromFilter:boolean = false) => {
+    const handleSort = (isLowPriceSort: boolean,  isFromFilter:boolean = false, flightData:any = data) => {
         let sortedList = []
-        const flightData = isFromFilter ? flight_data : data
         if (isLowPriceSort) {
             sortedList = [...flightData].sort((a: any, b: any) => a?.fare - b?.fare);
         }

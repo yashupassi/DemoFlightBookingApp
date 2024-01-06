@@ -47,7 +47,7 @@ function Passengers() {
                     break;
                 case ICON_TYPE_PASSENGER_INFANT:
                     const infantCount = infant_count > 0 ? infant_count - 1 : infant_count
-                    onChangeValue(FLIGHT_INFANT, infant_count)
+                    onChangeValue(FLIGHT_INFANT, infantCount)
                     break;
             }
         }
